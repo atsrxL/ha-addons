@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4
+
+- Remove the large Paraformer option and keep the fast int8 model only.
+- Store downloaded model files under `/config/models` so add-on restarts reuse the cache.
+
 ## 1.0.3
 
 - Add selectable Paraformer model option: `fast` or `large`.

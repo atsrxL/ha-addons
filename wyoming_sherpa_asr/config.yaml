@@ -1,7 +1,7 @@
 name: Wyoming Sherpa ASR
-version: 1.0.3
+version: 1.0.4
 slug: wyoming_sherpa_asr
-description: Chinese speech-to-text using selectable sherpa-onnx Paraformer models. Fast approx 0.5-1 GB, large approx 1.5-2.5 GB.
+description: Fast Chinese speech-to-text using sherpa-onnx Paraformer. Approx memory 0.5-1 GB.
 url: https://github.com/atsrxL/ha-addons/tree/main/wyoming_sherpa_asr
 arch:
   - aarch64
@@ -18,8 +18,6 @@ map:
   - type: addon_config
     read_only: false
 options:
-  model: fast
   num_threads: 4
 schema:
-  model: list(fast|large)
   num_threads: int(1,16)
