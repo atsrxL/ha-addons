@@ -34,5 +34,6 @@ linux/arm64
 - Language: Chinese / Mandarin
 - Backend: `sherpa-onnx`
 - Model: `sherpa-onnx-paraformer-zh-2023-09-14`
+- Approx memory: `0.5-1 GB`
 - Internal port: `10303`
 - Default exposed port: `10303`
