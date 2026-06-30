@@ -1,5 +1,5 @@
 name: Wyoming Sherpa ASR
-version: 1.0.0
+version: 1.0.1
 slug: wyoming_sherpa_asr
 description: Chinese speech-to-text for Home Assistant Assist using sherpa-onnx Paraformer
 url: https://github.com/atsrxL/ha-addons/tree/main/wyoming_sherpa_asr
@@ -19,4 +19,3 @@ map:
     read_only: false
 options: {}
 schema: {}
-
