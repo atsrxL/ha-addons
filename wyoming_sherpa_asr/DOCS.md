@@ -2,7 +2,7 @@
 
 ## Usage
 
-Start the add-on from Home Assistant. On first startup it downloads the Paraformer Chinese model. This can take a few minutes depending on network speed.
+Start the add-on from Home Assistant. On first startup it downloads the selected Paraformer Chinese model. This can take a few minutes depending on network speed.
 
 The Wyoming protocol service listens on port `10303`. The add-on exposes the same port on the host by default.
 
@@ -33,7 +33,8 @@ linux/arm64
 
 - Language: Chinese / Mandarin
 - Backend: `sherpa-onnx`
-- Model: `sherpa-onnx-paraformer-zh-2023-09-14`
-- Approx memory: `0.5-1 GB`
+- Models:
+  - `fast`: `sherpa-onnx-paraformer-zh-2023-09-14`, approx memory `0.5-1 GB`
+  - `large`: `sherpa-onnx-paraformer-zh-2024-03-09`, approx memory `1.5-2.5 GB`
 - Internal port: `10303`
 - Default exposed port: `10303`

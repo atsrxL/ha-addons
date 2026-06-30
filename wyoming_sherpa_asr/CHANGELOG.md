@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.3
+
+- Add selectable Paraformer model option: `fast` or `large`.
+- Add `num_threads` option.
+- Add support for `sherpa-onnx-paraformer-zh-2024-03-09` large model.
+
 ## 1.0.2
 
 - Add model download progress logs.

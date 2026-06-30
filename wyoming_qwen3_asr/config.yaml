@@ -1,7 +1,7 @@
 name: Wyoming Qwen3 ASR
-version: 1.0.0
+version: 1.0.1
 slug: wyoming_qwen3_asr
-description: Higher-accuracy Chinese speech-to-text using Qwen3-ASR 0.6B CPU backend. Approx memory 4-6 GB.
+description: Higher-accuracy Chinese speech-to-text using Qwen3-ASR 0.6B CPU backend. First startup downloads the model. Approx memory 4-6 GB.
 url: https://github.com/atsrxL/ha-addons/tree/main/wyoming_qwen3_asr
 arch:
   - aarch64

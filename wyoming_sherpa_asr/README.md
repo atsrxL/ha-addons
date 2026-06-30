@@ -2,9 +2,12 @@
 
 Chinese speech-to-text add-on for Home Assistant Assist.
 
-This add-on runs a Wyoming protocol ASR service on port `10303`, backed by `sherpa-onnx` and the Paraformer Chinese model.
+This add-on runs a Wyoming protocol ASR service on port `10303`, backed by `sherpa-onnx` and selectable Paraformer Chinese models.
 
-Approx memory requirement: `0.5-1 GB`.
+Approx memory requirement:
+
+- `fast`: `0.5-1 GB`
+- `large`: `1.5-2.5 GB`
 
 ## Features
 
@@ -13,6 +16,11 @@ Approx memory requirement: `0.5-1 GB`.
 - Prebuilt Docker image for `aarch64` and `amd64`
 - Suitable for Raspberry Pi 5 and other ARM64 hosts
 - Fast response for Home Assistant voice control
+
+## Options
+
+- `model`: `fast` or `large`
+- `num_threads`: CPU worker threads, default `4`
 
 ## Home Assistant
 
@@ -27,10 +35,11 @@ Then select this STT engine in your Assist pipeline.
 
 ## Model
 
-The add-on downloads this model on first startup:
+The add-on downloads the selected model on first startup:
 
 ```text
-sherpa-onnx-paraformer-zh-2023-09-14
+fast:  sherpa-onnx-paraformer-zh-2023-09-14
+large: sherpa-onnx-paraformer-zh-2024-03-09
 ```
 
 The model is stored under the add-on config volume and is reused after restart.
