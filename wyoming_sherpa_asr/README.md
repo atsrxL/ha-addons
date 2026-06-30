@@ -2,7 +2,7 @@
 
 Chinese speech-to-text add-on for Home Assistant Assist.
 
-This add-on runs a Wyoming protocol ASR service backed by `sherpa-onnx` and the Paraformer Chinese model.
+This add-on runs a Wyoming protocol ASR service on port `10303`, backed by `sherpa-onnx` and the Paraformer Chinese model.
 
 ## Features
 
@@ -31,4 +31,3 @@ sherpa-onnx-paraformer-zh-2023-09-14
 ```
 
 The model is stored under the add-on config volume and is reused after restart.
-

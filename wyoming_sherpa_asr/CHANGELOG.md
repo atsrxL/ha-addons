@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2
+
+- Add model download progress logs.
+- Align the container port with the exposed default port `10303`.
+
 ## 1.0.1
 
 - Fix startup failure when the model download is interrupted.

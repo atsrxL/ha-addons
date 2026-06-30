@@ -4,7 +4,7 @@
 
 Start the add-on from Home Assistant. On first startup it downloads the Paraformer Chinese model. This can take a few minutes depending on network speed.
 
-The Wyoming protocol service listens inside the container on port `10300`. The add-on exposes it on host port `10303` by default.
+The Wyoming protocol service listens on port `10303`. The add-on exposes the same port on the host by default.
 
 ## Assist Pipeline
 
@@ -34,6 +34,5 @@ linux/arm64
 - Language: Chinese / Mandarin
 - Backend: `sherpa-onnx`
 - Model: `sherpa-onnx-paraformer-zh-2023-09-14`
-- Internal port: `10300`
+- Internal port: `10303`
 - Default exposed port: `10303`
-

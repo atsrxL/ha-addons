@@ -1,5 +1,5 @@
 name: Wyoming Sherpa ASR
-version: 1.0.1
+version: 1.0.2
 slug: wyoming_sherpa_asr
 description: Chinese speech-to-text for Home Assistant Assist using sherpa-onnx Paraformer
 url: https://github.com/atsrxL/ha-addons/tree/main/wyoming_sherpa_asr
@@ -11,9 +11,9 @@ startup: services
 boot: auto
 image: atsrxl/wyoming-sherpa-asr
 ports:
-  10300/tcp: 10303
+  10303/tcp: 10303
 ports_description:
-  10300/tcp: Wyoming protocol
+  10303/tcp: Wyoming protocol
 map:
   - type: addon_config
     read_only: false
