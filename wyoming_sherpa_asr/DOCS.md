@@ -36,5 +36,6 @@ linux/arm64
 - Model: `sherpa-onnx-paraformer-zh-2023-09-14`
 - Model cache: `/config/models`
 - Approx memory: `0.5-1 GB`
+- Max audio duration: configurable, default `120` seconds
 - Internal port: `10303`
 - Default exposed port: `10303`

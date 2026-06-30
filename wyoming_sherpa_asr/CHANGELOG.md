@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.5
+
+- Add safer model archive extraction.
+- Pin Python package versions in the Docker image.
+- Add `max_audio_seconds` to limit per-request audio memory use.
+- Initialize logging before reading Home Assistant add-on options.
+- Make the Docker base image configurable at build time.
+
 ## 1.0.4
 
 - Remove the large Paraformer option and keep the fast int8 model only.

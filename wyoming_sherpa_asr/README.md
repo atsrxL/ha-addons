@@ -17,6 +17,7 @@ Approx memory requirement: `0.5-1 GB`.
 ## Options
 
 - `num_threads`: CPU worker threads, default `4`
+- `max_audio_seconds`: maximum accepted audio duration, default `120`
 
 ## Home Assistant
 
