@@ -1,0 +1,18 @@
+configuration:
+  deepseek_api_key:
+    name: DeepSeek API 密钥
+    description: 仅用于访问所配置 DeepSeek 接口的 API 密钥。
+  deepseek_base_url:
+    name: DeepSeek 接口地址
+    description: 兼容 OpenAI 格式的 DeepSeek API 基础地址。
+  models:
+    name: 模型列表
+    description: 向 Home Assistant 暴露的模型名，多个模型用英文逗号分隔。
+  timeout:
+    name: 请求超时
+    description: 等待 DeepSeek 返回的最长秒数。
+  log_level:
+    name: 日志级别
+    description: 代理日志详细程度，日志不会记录 API 密钥。
+network:
+  11435/tcp: Ollama 兼容接口

@@ -1,0 +1,18 @@
+configuration:
+  deepseek_api_key:
+    name: DeepSeek API key
+    description: API key used only for requests to the configured DeepSeek endpoint.
+  deepseek_base_url:
+    name: DeepSeek base URL
+    description: OpenAI-compatible DeepSeek API base URL.
+  models:
+    name: Models
+    description: Comma-separated model names advertised to Home Assistant.
+  timeout:
+    name: Request timeout
+    description: Maximum time in seconds to wait for DeepSeek.
+  log_level:
+    name: Log level
+    description: Proxy log verbosity. API keys are never logged.
+network:
+  11435/tcp: Ollama-compatible API
