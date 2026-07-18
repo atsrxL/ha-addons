@@ -1,0 +1,7 @@
+{
+  "deepseek_api_key": "test-token",
+  "deepseek_base_url": "http://host.docker.internal:18080",
+  "models": "deepseek-v4-flash,deepseek-v4-pro",
+  "timeout": 30,
+  "log_level": "DEBUG"
+}

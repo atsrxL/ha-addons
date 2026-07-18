@@ -1,0 +1,28 @@
+name: DeepSeek Ollama Proxy
+version: 1.0.0
+slug: deepseek_ollama_proxy
+description: Use the DeepSeek API through Home Assistant's Ollama integration.
+url: https://github.com/atsrxL/ha-addons/tree/main/deepseek_ollama_proxy
+arch:
+  - aarch64
+  - amd64
+init: false
+startup: services
+boot: auto
+image: ghcr.io/atsrxl/deepseek-ollama-proxy
+ports:
+  11435/tcp: 11435
+ports_description:
+  11435/tcp: Ollama-compatible API
+options:
+  deepseek_api_key: null
+  deepseek_base_url: https://api.deepseek.com
+  models: deepseek-v4-flash,deepseek-v4-pro
+  timeout: 90
+  log_level: INFO
+schema:
+  deepseek_api_key: password
+  deepseek_base_url: url
+  models: str
+  timeout: int(10,600)
+  log_level: list(DEBUG|INFO|WARNING|ERROR)
