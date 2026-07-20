@@ -1,0 +1,40 @@
+name: Verify published GHCR images
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/verify-published-ghcr-images.yaml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify anonymous multi-architecture pulls
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Skopeo
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends skopeo
+
+      - name: Verify UPS NUT Server image
+        shell: bash
+        run: |
+          skopeo inspect --raw docker://ghcr.io/atsrxl/ups-nut-server:1.0.1 > ups-manifest.json
+          jq -e '
+            any(.manifests[]; .platform.os == "linux" and .platform.architecture == "amd64") and
+            any(.manifests[]; .platform.os == "linux" and .platform.architecture == "arm64")
+          ' ups-manifest.json >/dev/null
+
+      - name: Verify Wyoming Sherpa ASR image
+        shell: bash
+        run: |
+          skopeo inspect --raw docker://ghcr.io/atsrxl/wyoming-sherpa-asr:1.0.6 > wyoming-manifest.json
+          jq -e '
+            any(.manifests[]; .platform.os == "linux" and .platform.architecture == "amd64") and
+            any(.manifests[]; .platform.os == "linux" and .platform.architecture == "arm64")
+          ' wyoming-manifest.json >/dev/null
