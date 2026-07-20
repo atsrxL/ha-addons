@@ -2,6 +2,12 @@ name: Build UPS NUT Server
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "ups_nut_server/**"
+      - ".github/workflows/build-ups-nut-server.yaml"
   push:
     branches:
       - main
@@ -76,7 +82,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Build and push image
+      - name: Build image
         uses: home-assistant/builder/actions/build-image@2026.06.0
         with:
           arch: ${{ matrix.arch }}
@@ -91,7 +97,7 @@ jobs:
             io.hass.name=${{ needs.prepare.outputs.name }}
             io.hass.description=${{ needs.prepare.outputs.description }}
             io.hass.url=${{ needs.prepare.outputs.url }}
-          push: "true"
+          push: ${{ github.event_name != 'pull_request' }}
           version: ${{ needs.prepare.outputs.version }}
 
   manifest:
@@ -99,6 +105,7 @@ jobs:
     needs:
       - prepare
       - build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
