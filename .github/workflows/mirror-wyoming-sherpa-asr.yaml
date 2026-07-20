@@ -53,7 +53,10 @@ jobs:
         shell: bash
         run: |
           skopeo inspect --raw "docker://${SOURCE_IMAGE}" > source-manifest.json
-          jq -e '.manifests | length >= 2' source-manifest.json >/dev/null
+          jq -e '
+            any(.manifests[]; .platform.os == "linux" and .platform.architecture == "amd64") and
+            any(.manifests[]; .platform.os == "linux" and .platform.architecture == "arm64")
+          ' source-manifest.json >/dev/null
           jq -r '.manifests[].platform | "\(.os)/\(.architecture)"' source-manifest.json
 
       - name: Copy versioned image to GHCR
@@ -87,4 +90,8 @@ jobs:
           skopeo inspect --raw \
             --creds "${GITHUB_ACTOR}:${GHCR_TOKEN}" \
             "docker://${TARGET_IMAGE}:${{ steps.app.outputs.version }}" \
-            | jq -e '.manifests | length >= 2' >/dev/null
+            > target-manifest.json
+          jq -e '
+            any(.manifests[]; .platform.os == "linux" and .platform.architecture == "amd64") and
+            any(.manifests[]; .platform.os == "linux" and .platform.architecture == "arm64")
+          ' target-manifest.json >/dev/null
