@@ -105,7 +105,7 @@ def safe_attr(obj: Any, name: str, default: Any = None) -> Any:
 
 
 def json_publish(client: mqtt.Client, topic: str, payload: dict[str, Any], *, retain: bool = True) -> None:
-    result = client.publish(topic, json.dumps(payload, separators=(",", ":"), ensure_ascii=False), qos=0, retain=retain)
+    result = client.publish(topic, json.dumps(payload, separators=(",", ":"), ensure_ascii=False, default=str), qos=0, retain=retain)
     if result.rc != mqtt.MQTT_ERR_SUCCESS:
         LOG.warning("MQTT publish failed for %s: rc=%s", topic, result.rc)
 
