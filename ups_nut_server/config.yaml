@@ -1,0 +1,60 @@
+name: UPS NUT Server
+version: 1.0.0
+slug: ups_nut_server
+description: Share a USB or serial UPS over the network using Network UPS Tools.
+url: https://github.com/atsrxL/ha-addons/tree/main/ups_nut_server
+arch:
+  - aarch64
+  - amd64
+init: false
+startup: services
+boot: auto
+stage: stable
+uart: true
+usb: true
+udev: true
+ports:
+  3493/tcp: 3493
+ports_description:
+  3493/tcp: Network UPS Tools server
+watchdog: tcp://[HOST]:[PORT:3493]
+options:
+  ups_name: qnapups
+  driver: huawei-ups2000
+  device: auto
+  description: Huawei UPS2000
+  poll_interval: 2
+  max_retry: 5
+  retry_delay: 5
+  monitor_user: monuser
+  monitor_password: secret
+  monitor_role: secondary
+  admin_enabled: true
+  admin_user: admin
+  admin_password: "123456"
+  admin_role: primary
+  allow_admin_commands: true
+  extra_ups_config: ""
+  healthcheck_interval: 30
+  healthcheck_failures: 3
+  log_level: info
+schema:
+  ups_name: match(^[A-Za-z0-9_.-]+$)
+  driver: match(^[A-Za-z0-9_.-]+$)
+  device: str
+  description: str
+  poll_interval: int(1,300)
+  max_retry: int(1,20)
+  retry_delay: int(1,60)
+  monitor_user: match(^[A-Za-z0-9_.-]+$)
+  monitor_password: password
+  monitor_role: list(primary|secondary)
+  admin_enabled: bool
+  admin_user: match(^[A-Za-z0-9_.-]+$)
+  admin_password: password
+  admin_role: list(primary|secondary)
+  allow_admin_commands: bool
+  extra_ups_config: str
+  healthcheck_interval: int(10,600)
+  healthcheck_failures: int(1,20)
+  log_level: list(debug|info|warning|error)
