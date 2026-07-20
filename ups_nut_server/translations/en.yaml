@@ -1,0 +1,60 @@
+configuration:
+  ups_name:
+    name: UPS name
+    description: NUT device name presented to clients, for example qnapups or ups.
+  driver:
+    name: NUT driver
+    description: Driver executable name, for example huawei-ups2000 or usbhid-ups.
+  device:
+    name: Device or port
+    description: Use auto, a /dev/serial/by-id path, another device path, or a network endpoint required by the driver.
+  description:
+    name: UPS description
+    description: Human-readable description stored in ups.conf.
+  poll_interval:
+    name: Poll interval
+    description: Base NUT polling interval in seconds.
+  max_retry:
+    name: Driver start retries
+    description: Number of attempts NUT makes when starting the driver.
+  retry_delay:
+    name: Retry delay
+    description: Delay in seconds between driver start attempts.
+  monitor_user:
+    name: Monitoring username
+    description: Read-only or secondary NUT client username.
+  monitor_password:
+    name: Monitoring password
+    description: Password used by Home Assistant and monitoring clients.
+  monitor_role:
+    name: Monitoring role
+    description: NUT upsmon role assigned to the monitoring account.
+  admin_enabled:
+    name: Enable administrator account
+    description: Create a second NUT account for NAS compatibility and administrative operations.
+  admin_user:
+    name: Administrator username
+    description: Username for the optional administrator account.
+  admin_password:
+    name: Administrator password
+    description: Password for the optional administrator account.
+  admin_role:
+    name: Administrator role
+    description: NUT upsmon role assigned to the administrator account.
+  allow_admin_commands:
+    name: Allow administrator commands
+    description: Permit SET operations and all instant commands for the administrator account.
+  extra_ups_config:
+    name: Extra driver options
+    description: Additional lines appended inside the UPS section of ups.conf.
+  healthcheck_interval:
+    name: Health-check interval
+    description: Seconds between UPS communication checks after startup.
+  healthcheck_failures:
+    name: Health-check failure limit
+    description: Consecutive failed checks before the app exits and restarts.
+  log_level:
+    name: Log level
+    description: App log verbosity.
+network:
+  3493/tcp: Network UPS Tools server
