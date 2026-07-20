@@ -14,20 +14,22 @@ The Wyoming protocol service listens on port `10303`. The add-on exposes the sam
 4. Use port `10303`.
 5. Select the new STT engine in your Assist pipeline.
 
-## Docker Image
+## Container Image
 
-This add-on uses:
+This add-on uses the GitHub Container Registry image:
 
 ```text
-atsrxl/wyoming-sherpa-asr:latest
+ghcr.io/atsrxl/wyoming-sherpa-asr:latest
 ```
 
-The `latest` tag is multi-architecture and supports:
+The image is multi-architecture and supports:
 
 ```text
 linux/amd64
 linux/arm64
 ```
+
+Version `1.0.6` is a registry migration of the existing Docker Hub `1.0.5` image. The application contents are unchanged.
 
 ## Notes
 

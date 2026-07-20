@@ -10,7 +10,7 @@ Approx memory requirement: `0.5-1 GB`.
 
 - Local Chinese / Mandarin speech recognition
 - Wyoming protocol support for Home Assistant Assist
-- Prebuilt Docker image for `aarch64` and `amd64`
+- Prebuilt GHCR image for `aarch64` and `amd64`
 - Suitable for Raspberry Pi 5 and other ARM64 hosts
 - Fast response for Home Assistant voice control
 
@@ -29,6 +29,12 @@ Port: 10303
 ```
 
 Then select this STT engine in your Assist pipeline.
+
+## Image
+
+```text
+ghcr.io/atsrxl/wyoming-sherpa-asr
+```
 
 ## Model
 

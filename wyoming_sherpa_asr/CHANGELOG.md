@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.6
+
+- Move the pre-built multi-architecture image from Docker Hub to GitHub Container Registry.
+- Preserve the existing `amd64` and `arm64` image contents during the registry migration.
+
 ## 1.0.5
 
 - Add safer model archive extraction.
