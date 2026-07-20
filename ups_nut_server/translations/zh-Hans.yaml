@@ -1,0 +1,60 @@
+configuration:
+  ups_name:
+    name: UPS 名称
+    description: 提供给客户端的 NUT 设备名称，例如 qnapups 或 ups。
+  driver:
+    name: NUT 驱动
+    description: 驱动程序名称，例如 huawei-ups2000 或 usbhid-ups。
+  device:
+    name: 设备或端口
+    description: 可填写 auto、/dev/serial/by-id 路径、其他设备路径，或驱动所需的网络地址。
+  description:
+    name: UPS 描述
+    description: 写入 ups.conf 的可读设备描述。
+  poll_interval:
+    name: 轮询间隔
+    description: NUT 基础轮询间隔，单位为秒。
+  max_retry:
+    name: 驱动启动重试次数
+    description: NUT 启动驱动失败时的最大尝试次数。
+  retry_delay:
+    name: 重试间隔
+    description: 驱动启动重试之间的等待秒数。
+  monitor_user:
+    name: 监控用户名
+    description: Home Assistant 和普通监控客户端使用的账号。
+  monitor_password:
+    name: 监控密码
+    description: Home Assistant 和普通监控客户端使用的密码。
+  monitor_role:
+    name: 监控账号角色
+    description: 分配给监控账号的 NUT upsmon 角色。
+  admin_enabled:
+    name: 启用管理员账号
+    description: 创建用于 NAS 兼容和管理操作的第二个 NUT 账号。
+  admin_user:
+    name: 管理员用户名
+    description: 可选管理员账号的用户名。
+  admin_password:
+    name: 管理员密码
+    description: 可选管理员账号的密码。
+  admin_role:
+    name: 管理员账号角色
+    description: 分配给管理员账号的 NUT upsmon 角色。
+  allow_admin_commands:
+    name: 允许管理员命令
+    description: 允许管理员账号执行 SET 和全部即时命令。
+  extra_ups_config:
+    name: 额外驱动选项
+    description: 追加到 ups.conf 当前 UPS 段落内的配置行。
+  healthcheck_interval:
+    name: 健康检查间隔
+    description: 启动完成后检查 UPS 通信状态的间隔秒数。
+  healthcheck_failures:
+    name: 健康检查失败上限
+    description: 连续失败达到该次数后退出并由 Supervisor 重启插件。
+  log_level:
+    name: 日志级别
+    description: 插件日志详细程度。
+network:
+  3493/tcp: Network UPS Tools 服务端口
