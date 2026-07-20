@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1
+
+- Switched Home Assistant installation to a pre-built GHCR image.
+- Added automated `aarch64` and `amd64` builds with a generic multi-architecture manifest.
+- Replaced insecure default passwords with `CHANGE_ME` placeholders.
+
 ## 1.0.0
 
 - Initial Home Assistant app release.
