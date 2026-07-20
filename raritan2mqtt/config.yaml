@@ -1,5 +1,5 @@
 name: "Raritan PX MQTT"
-version: "0.1.0"
+version: "0.1.1"
 slug: "raritan_px_mqtt"
 image: "ghcr.io/atsrxl/raritan-px-mqtt"
 description: "Bridge a Raritan PX2/PX3 PDU to Home Assistant through the existing MQTT broker"
