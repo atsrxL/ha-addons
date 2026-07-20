@@ -1,8 +1,9 @@
 name: UPS NUT Server
-version: 1.0.0
+version: 1.0.1
 slug: ups_nut_server
 description: Share a USB or serial UPS over the network using Network UPS Tools.
 url: https://github.com/atsrxL/ha-addons/tree/main/ups_nut_server
+image: ghcr.io/atsrxl/ups-nut-server
 arch:
   - aarch64
   - amd64
@@ -27,11 +28,11 @@ options:
   max_retry: 5
   retry_delay: 5
   monitor_user: monuser
-  monitor_password: secret
+  monitor_password: CHANGE_ME
   monitor_role: secondary
   admin_enabled: true
   admin_user: admin
-  admin_password: "123456"
+  admin_password: CHANGE_ME
   admin_role: primary
   allow_admin_commands: true
   extra_ups_config: ""
