@@ -4,7 +4,7 @@
 
 This app connects a UPS attached to Home Assistant OS and publishes its data through Network UPS Tools (NUT) on TCP port `3493`. Home Assistant, QNAP, Synology, and other NUT clients can then use the same UPS.
 
-It is based on the behavior of the separate `atsrxL/ups-nut-server` Docker project, but is independently maintained for Home Assistant OS.
+It is based on the behavior of the separate `atsrxL/ups-nut-server` Docker project, but is independently maintained for Home Assistant OS. Installation uses a pre-built multi-architecture image from GitHub Container Registry instead of building packages on the Home Assistant device.
 
 ## Default Huawei UPS2000 configuration
 
@@ -48,6 +48,8 @@ extra_ups_config: |-
 
 ## Client settings
 
+Before starting the app, replace both `CHANGE_ME` password placeholders in the configuration.
+
 ### Home Assistant NUT integration
 
 Use:
@@ -55,8 +57,8 @@ Use:
 - Host: the Home Assistant host IP, or the app hostname when supported
 - Port: `3493`
 - UPS name: `qnapups` by default
-- Username: `monuser`
-- Password: `secret` by default
+- Username: `monuser` by default
+- Password: the value configured as `monitor_password`
 
 ### QNAP
 
@@ -64,20 +66,20 @@ The compatibility defaults are:
 
 - UPS name: `qnapups`
 - Username: `admin`
-- Password: `123456`
+- Password: the value configured as `admin_password`
 
 ### Synology
 
 The compatibility defaults are:
 
 - Username: `monuser`
-- Password: `secret`
+- Password: the value configured as `monitor_password`
 
 Some DSM versions assume the UPS name `ups`. Change `ups_name` from `qnapups` to `ups` when necessary.
 
 ## Security
 
-The default credentials are retained only for compatibility with common NAS clients. Change both passwords when possible, and do not forward TCP port `3493` to the public internet.
+The app does not ship with usable default passwords. Replace the `CHANGE_ME` placeholders before first start, use unique passwords, and do not forward TCP port `3493` to the public internet.
 
 Set `allow_admin_commands: false` when clients only need monitoring access.
 
