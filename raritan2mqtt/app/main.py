@@ -130,7 +130,7 @@ class RaritanBridge:
         self.pdu_password = os.environ["PDU_PASSWORD"]
         self.pdu_protocol = os.getenv("PDU_PROTOCOL", "https")
         self.verify_ssl = env_bool("PDU_VERIFY_SSL", False)
-        self.poll_interval = max(5, int(os.getenv("POLL_INTERVAL", "15")))
+        self.poll_interval = max(1, int(os.getenv("POLL_INTERVAL", "15")))
         self.discovery_prefix = os.getenv("DISCOVERY_PREFIX", "homeassistant").strip("/")
         self.topic_prefix = os.getenv("TOPIC_PREFIX", "raritan2mqtt").strip("/")
 

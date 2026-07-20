@@ -27,7 +27,7 @@ schema:
   pdu_password: password
   protocol: list(http|https)
   verify_ssl: bool
-  poll_interval: int(5,3600)
+  poll_interval: int(1,3600)
   discovery_prefix: str
   topic_prefix: str
   log_level: list(DEBUG|INFO|WARNING|ERROR)
