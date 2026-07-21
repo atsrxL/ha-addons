@@ -72,11 +72,6 @@ icon_tap_action:
   perform_action: switch.toggle
   target:
     entity_id: switch.YOUR_OUTLET_SWITCH
-icon_hold_action:
-  action: perform-action
-  perform_action: more-info
-  target:
-    entity_id: switch.YOUR_OUTLET_SWITCH
 ```
 
 The card remains a numeric power sensor, so the graph and sensor history work normally. Clicking the icon controls the separate switch entity and avoids attempts to call a nonexistent `sensor.turn_off` action.
