@@ -32,7 +32,7 @@ log_level: INFO
 - `pdu_password`: Raritan web/JSON-RPC password.
 - `protocol`: `https` is recommended. Use `http` only when necessary.
 - `verify_ssl`: Enable only when the PDU certificate is trusted by the app.
-- `poll_interval`: Polling period in seconds. Recommended: 10–30 seconds.
+- `poll_interval`: Polling period in seconds. Values from 1 to 3600 seconds are accepted; 10–30 seconds is recommended for normal use.
 - `discovery_prefix`: Normally `homeassistant`.
 - `topic_prefix`: Root MQTT topic used by the bridge.
 - `log_level`: Logging verbosity.
@@ -43,40 +43,43 @@ MQTT host, port, username, password, and TLS settings are obtained automatically
 
 The app probes the actual hardware and creates only entities implemented by the connected PDU:
 
-- Inlet electrical measurements
-- Outlet electrical measurements
+- Inlet electrical measurement sensors
+- Outlet electrical measurement sensors
 - One switch for every switchable outlet
 - One power-cycle button for every switchable outlet
 
 All entities share one Home Assistant device entry. Names configured in the Raritan web interface are used for outlet entities.
 
-## Tile card: show power and control the outlet
+Measurement history and charts belong to the numeric `sensor` entities. Outlet `switch` entities are control-only.
 
-A power sensor cannot execute `sensor.turn_off`. Use the corresponding switch entity as the Tile card entity and display the switch's power attribute:
+## Tile card: power graph with an outlet toggle
+
+Use the active-power sensor as the card entity so Home Assistant can display its history graph. Configure the icon action to call the corresponding outlet switch explicitly:
 
 ```yaml
 type: tile
-entity: switch.YOUR_OUTLET_SWITCH
+entity: sensor.YOUR_OUTLET_ACTIVE_POWER
 name: Outlet 1
-state_content:
-  - state
-  - active_power_display
-icon_tap_action:
-  action: toggle
+icon: mdi:power-socket
+features:
+  - type: trend-graph
+    hours_to_show: 24
+    detail: true
 tap_action:
   action: more-info
+icon_tap_action:
+  action: perform-action
+  perform_action: switch.toggle
+  target:
+    entity_id: switch.YOUR_OUTLET_SWITCH
 icon_hold_action:
-  action: more-info
+  action: perform-action
+  perform_action: more-info
+  target:
+    entity_id: switch.YOUR_OUTLET_SWITCH
 ```
 
-Additional switch attributes include:
-
-- `active_power_display`
-- `apparent_power_display`
-- `current_display`
-- `voltage_display`
-- `power_factor_display`
-- `active_energy_display`
+The card remains a numeric power sensor, so the graph and sensor history work normally. Clicking the icon controls the separate switch entity and avoids attempts to call a nonexistent `sensor.turn_off` action.
 
 ## Migration from direct SNMP YAML
 
@@ -88,3 +91,4 @@ After the MQTT entities work, remove or comment out the old Raritan entries in `
 - **Certificate errors:** Keep `verify_ssl: false` for the factory/self-signed certificate, or install a trusted certificate on the PDU.
 - **No MQTT entities:** Confirm Mosquitto Broker and the Home Assistant MQTT integration are running, then restart this app.
 - **Outlet command rejected:** Grant the Raritan user outlet-switching permission.
+- **No graph on a switch card:** Use the corresponding active-power sensor as the card entity and target the switch through `icon_tap_action`.
