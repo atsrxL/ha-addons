@@ -32,7 +32,7 @@ schema:
   verify_ssl: bool
   poll_interval: int(1,3600)
   hide_outlet_sensors:
-    - list(Apparent Power|Frequency|Power Factor|Voltage|Current)
+    - list(Apparent Power|Frequency|Power Factor|Voltage|Current)?
   discovery_prefix: str
   topic_prefix: str
   log_level: list(DEBUG|INFO|WARNING|ERROR)
