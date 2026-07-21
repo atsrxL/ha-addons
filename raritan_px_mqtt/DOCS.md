@@ -22,6 +22,7 @@ pdu_password: YOUR_RARITAN_WEB_PASSWORD
 protocol: https
 verify_ssl: false
 poll_interval: 15
+hide_outlet_sensors: []
 discovery_prefix: homeassistant
 topic_prefix: raritan2mqtt
 log_level: INFO
@@ -32,19 +33,34 @@ log_level: INFO
 - `pdu_password`: Raritan web/JSON-RPC password.
 - `protocol`: `https` is recommended. Use `http` only when necessary.
 - `verify_ssl`: Enable only when the PDU certificate is trusted by the app.
-- `poll_interval`: Polling period in seconds. Values from 1 to 3600 seconds are accepted; 10–30 seconds is recommended for normal use.
+- `poll_interval`: Polling period in seconds. Values from 1 to 3600 seconds are accepted.
+- `hide_outlet_sensors`: A multi-select list of outlet measurements that should not be published to Home Assistant.
 - `discovery_prefix`: Normally `homeassistant`.
 - `topic_prefix`: Root MQTT topic used by the bridge.
 - `log_level`: Logging verbosity.
 
 MQTT host, port, username, password, and TLS settings are obtained automatically from the Supervisor MQTT service. They are not duplicated in this app's configuration.
 
+### Hide selected outlet measurements
+
+The `hide_outlet_sensors` selector supports:
+
+- `Apparent Power`
+- `Frequency`
+- `Power Factor`
+- `Voltage`
+- `Current`
+
+The option affects only per-outlet measurement entities. Inlet measurements are not changed. The default empty selection publishes every supported outlet sensor.
+
+After changing the selection, save the configuration and restart the app. Previously published MQTT Discovery topics for newly hidden sensors are cleared, so those entities are removed from the Raritan device in Home Assistant. Selecting fewer hidden fields and restarting publishes the corresponding entities again.
+
 ## Home Assistant entities
 
 The app probes the actual hardware and creates only entities implemented by the connected PDU:
 
 - Inlet electrical measurement sensors
-- Outlet electrical measurement sensors
+- Outlet electrical measurement sensors, except fields hidden in app configuration
 - One switch for every switchable outlet
 - One power-cycle button for every switchable outlet
 
@@ -85,5 +101,5 @@ After the MQTT entities work, remove or comment out the old Raritan entries in `
 - **PDU initialization failed:** Check the PDU address, protocol, username, password, and JSON-RPC access.
 - **Certificate errors:** Keep `verify_ssl: false` for the factory/self-signed certificate, or install a trusted certificate on the PDU.
 - **No MQTT entities:** Confirm Mosquitto Broker and the Home Assistant MQTT integration are running, then restart this app.
+- **Hidden entities remain visible:** Restart the app once after saving the selection. If Home Assistant still shows a stale entity, reload the MQTT integration.
 - **Outlet command rejected:** Grant the Raritan user outlet-switching permission.
-- **No graph on a switch card:** Use the corresponding active-power sensor as the card entity and target the switch through `icon_tap_action`.
