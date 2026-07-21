@@ -1,0 +1,4 @@
+configuration:
+  hide_outlet_sensors:
+    name: Hidden outlet sensors
+    description: Select outlet measurement entities that should not be published. Inlet measurements are unaffected.
