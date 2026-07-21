@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.4
+
+- Restore the sensor-first entity model: numeric measurements remain on `sensor` entities for history and trend graphs.
+- Keep outlet `switch` entities focused on on/off control instead of duplicating measurement attributes.
+- Document a Tile card that shows the active-power graph while the icon calls the matching switch.
+- Preserve 1-second polling support and stable release status.
+
 ## 0.2.3
 
 - Restore configurable polling intervals down to 1 second in both the add-on schema and runtime.
