@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.5
+
+- Add a multi-select app option for hiding selected per-outlet measurement entities.
+- Support hiding Apparent Power, Frequency, Power Factor, Voltage, and Current.
+- Leave inlet measurements unaffected.
+- Clear stale MQTT Discovery topics when a field is newly hidden, and restore entities when it is unhidden.
+
 ## 0.2.4
 
 - Restore the sensor-first entity model: numeric measurements remain on `sensor` entities for history and trend graphs.
