@@ -6,30 +6,33 @@ Bridge Raritan PX2/PX3 PDUs into Home Assistant with the PDU JSON-RPC API and MQ
 - Does not include or start another MQTT broker
 - Automatically detects inlets, outlets, and supported measurements
 - Groups all entities under one Home Assistant device
-- Supports outlet on, off, and power-cycle commands
-- Adds outlet measurements as attributes of the matching switch entity
+- Creates numeric measurement sensors for history and trend graphs
+- Creates separate outlet switches for on/off control
+- Supports outlet power-cycle commands
+- Supports polling intervals down to 1 second
 
 See `DOCS.md` for installation and configuration.
 
-## Tile card: show power and control the outlet
+## Tile card: power graph and outlet control
 
-Use the switch entity as the card entity. The icon toggles the outlet while the card displays active power:
+Keep the active-power sensor as the card entity, then make the icon call the corresponding switch:
 
 ```yaml
 type: tile
-entity: switch.YOUR_OUTLET_SWITCH
+entity: sensor.YOUR_OUTLET_ACTIVE_POWER
 name: Outlet 1
-state_content:
-  - state
-  - active_power_display
-icon_tap_action:
-  action: toggle
+icon: mdi:power-socket
+features:
+  - type: trend-graph
+    hours_to_show: 24
+    detail: true
 tap_action:
   action: more-info
-icon_hold_action:
-  action: more-info
+icon_tap_action:
+  action: perform-action
+  perform_action: switch.toggle
+  target:
+    entity_id: switch.YOUR_OUTLET_SWITCH
 ```
 
-Available formatted attributes include `active_power_display`,
-`apparent_power_display`, `current_display`, `voltage_display`,
-`power_factor_display`, and `active_energy_display`.
+This preserves the power graph and history while letting the icon control the outlet.
