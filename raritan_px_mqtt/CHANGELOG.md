@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.3
+
+- Restore configurable polling intervals down to 1 second in both the add-on schema and runtime.
+- Promote the add-on from experimental to stable.
+- Restore serialization support for Raritan SDK Time values.
+- Restore paho-mqtt v2 connection result handling.
+
 ## 0.2.0
 
 - Expose outlet measurements as attributes of each MQTT switch.
