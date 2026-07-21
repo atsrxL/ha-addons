@@ -25,7 +25,7 @@ def env_bool(name: str, default: bool = False) -> bool:
 
 
 def json_publish(client: mqtt.Client, topic: str, payload: dict[str, Any], retain: bool = True) -> None:
-    message = json.dumps(payload, separators=(",", ":"), ensure_ascii=False)
+    message = json.dumps(payload, separators=(",", ":"), ensure_ascii=False, default=str)
     result = client.publish(topic, message, qos=0, retain=retain)
     if result.rc != mqtt.MQTT_ERR_SUCCESS:
         LOG.warning("MQTT publish failed for %s: rc=%s", topic, result.rc)
@@ -33,7 +33,7 @@ def json_publish(client: mqtt.Client, topic: str, payload: dict[str, Any], retai
 
 class Bridge:
     def __init__(self) -> None:
-        self.poll_interval = max(5, int(os.getenv("POLL_INTERVAL", "15")))
+        self.poll_interval = max(1, int(os.getenv("POLL_INTERVAL", "15")))
         self.discovery_prefix = os.getenv("DISCOVERY_PREFIX", "homeassistant").strip("/")
         topic_prefix = os.getenv("TOPIC_PREFIX", "raritan2mqtt").strip("/")
         self.device = RaritanDevice(
@@ -76,7 +76,8 @@ class Bridge:
             raise RuntimeError("Timed out while connecting to the Supervisor MQTT service")
 
     def _on_connect(self, client: mqtt.Client, userdata: Any, flags: Any, reason_code: Any, properties: Any) -> None:
-        if reason_code != 0:
+        is_failure = getattr(reason_code, "is_failure", reason_code != 0)
+        if is_failure:
             LOG.error("MQTT connection failed: %s", reason_code)
             return
         self.mqtt_connected.set()
