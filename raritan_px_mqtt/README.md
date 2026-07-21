@@ -10,8 +10,21 @@ Bridge Raritan PX2/PX3 PDUs into Home Assistant with the PDU JSON-RPC API and MQ
 - Creates separate outlet switches for on/off control
 - Supports outlet power-cycle commands
 - Supports polling intervals down to 1 second
+- Can hide selected per-outlet measurement entities from app configuration
 
 See `DOCS.md` for installation and configuration.
+
+## Outlet sensor visibility
+
+The app configuration provides a multi-select `hide_outlet_sensors` option. It can suppress these outlet entities while leaving inlet measurements untouched:
+
+- Apparent Power
+- Frequency
+- Power Factor
+- Voltage
+- Current
+
+The default empty selection publishes every supported measurement.
 
 ## Tile card: power graph and outlet control
 
