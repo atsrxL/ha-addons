@@ -1,0 +1,4 @@
+configuration:
+  hide_outlet_sensors:
+    name: 隐藏的插座传感器
+    description: 选择不发布到 Home Assistant 的插座测量实体；不会影响输入端测量实体。
