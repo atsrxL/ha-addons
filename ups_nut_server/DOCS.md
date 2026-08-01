@@ -11,7 +11,7 @@ It is based on the behavior of the separate `atsrxL/ups-nut-server` Docker proje
 The defaults are configured for the Eaton 5P 1150iR detected by this host as USB HID device `0463:ffff`:
 
 ```yaml
-ups_name: 1uRackups
+ups_name: Ups
 driver: usbhid-ups
 device: auto
 description: Eaton 5P 1150iR
@@ -54,7 +54,7 @@ extra_ups_config: |-
 
 ## Client settings
 
-The default monitor and administrator password is `123456` as requested. Change it to a strong unique password before exposing NUT beyond the trusted LAN.
+The default monitor and administrator password is `123456` as requested. The UPS name and both credentials can be changed in the app configuration page. Change the password to a strong unique value before exposing NUT beyond the trusted LAN.
 
 ### Home Assistant NUT integration
 
@@ -62,7 +62,7 @@ Use:
 
 - Host: the Home Assistant host IP, or the app hostname when supported
 - Port: `3493`
-- UPS name: `1uRackups` by default
+- UPS name: `Ups` by default (editable in the app configuration page)
 - Username: `monuser` by default
 - Password: the value configured as `monitor_password`
 
@@ -70,7 +70,7 @@ Use:
 
 The compatibility defaults are:
 
-- UPS name: `1uRackups`
+- UPS name: `Ups` (editable in the app configuration page)
 - Username: `admin`
 - Password: the value configured as `admin_password`
 
@@ -81,11 +81,11 @@ The compatibility defaults are:
 - Username: `monuser`
 - Password: the value configured as `monitor_password`
 
-Some DSM versions assume the UPS name `ups`. Change `ups_name` from `1uRackups` to `ups` when necessary.
+Some DSM versions assume the UPS name `ups`. Change `ups_name` from `Ups` to `ups` when necessary.
 
 ## Security
 
-The default credentials are `monuser`/`123456` and `admin`/`123456`. These credentials are intentionally simple for the requested setup; change them before exposing TCP port `3493`, and never forward that port to the public internet.
+The default credentials are `monuser`/`123456` and `admin`/`123456`. These credentials are intentionally simple for the requested setup; change them in the app configuration page before exposing TCP port `3493`, and never forward that port to the public internet.
 
 Set `allow_admin_commands: false` when clients only need monitoring access.
 
@@ -110,7 +110,7 @@ Check:
 ### Test from another machine
 
 ```bash
-upsc 1uRackups@HOME_ASSISTANT_IP
+upsc Ups@HOME_ASSISTANT_IP
 ```
 
 A successful response includes values such as `ups.status`, `battery.charge`, and `input.voltage` when the driver exposes them.

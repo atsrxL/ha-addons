@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.4
+
+- Changed the default UPS name to `Ups`.
+- Kept `ups_name` as an editable option in the Home Assistant app configuration page.
+- Documented changing the UPS name and using the new client endpoint.
+
 ## 1.0.3
 
 - Changed the default UPS name to `1uRackups`.

@@ -1,7 +1,7 @@
 configuration:
   ups_name:
-    name: UPS name
-    description: NUT device name presented to clients, for example 1uRackups or ups.
+    name: UPS name (editable)
+    description: NUT device name presented to clients; change it in the app configuration page, for example Ups or ups.
   driver:
     name: NUT driver
     description: Driver executable name, for example usbhid-ups or huawei-ups2000.

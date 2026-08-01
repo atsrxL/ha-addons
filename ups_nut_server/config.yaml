@@ -1,5 +1,5 @@
 name: UPS NUT Server
-version: 1.0.3
+version: 1.0.4
 slug: ups_nut_server
 description: Share a USB or serial UPS over the network using Network UPS Tools.
 url: https://github.com/atsrxL/ha-addons/tree/main/ups_nut_server
@@ -20,7 +20,7 @@ ports_description:
   3493/tcp: Network UPS Tools server
 watchdog: tcp://[HOST]:[PORT:3493]
 options:
-  ups_name: 1uRackups
+  ups_name: Ups
   driver: usbhid-ups
   device: auto
   description: Eaton 5P 1150iR

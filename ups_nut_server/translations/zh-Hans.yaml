@@ -1,7 +1,7 @@
 configuration:
   ups_name:
-    name: UPS 名称
-    description: 提供给客户端的 NUT 设备名称，例如 1uRackups 或 ups。
+    name: UPS 名称（可修改）
+    description: 提供给客户端的 NUT 设备名称，可在插件配置页面修改，例如 Ups 或 ups。
   driver:
     name: NUT 驱动
     description: 驱动程序名称，例如 usbhid-ups 或 huawei-ups2000。
