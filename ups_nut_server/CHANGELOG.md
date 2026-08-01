@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.3
+
+- Changed the default UPS name to `1uRackups`.
+- Set the requested `monuser` and `admin` default passwords to `123456`.
+
+## 1.0.2
+
+- Set the default driver to `usbhid-ups` for the Eaton 5P 1150iR.
+- Match the connected Eaton USB HID device by vendor `0463` and product `ffff`.
+- Document USB HID setup and verification for the Eaton 5P.
+
 ## 1.0.1
 
 - Switched Home Assistant installation to a pre-built GHCR image.

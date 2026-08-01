@@ -1,5 +1,5 @@
 name: UPS NUT Server
-version: 1.0.1
+version: 1.0.3
 slug: ups_nut_server
 description: Share a USB or serial UPS over the network using Network UPS Tools.
 url: https://github.com/atsrxL/ha-addons/tree/main/ups_nut_server
@@ -20,22 +20,24 @@ ports_description:
   3493/tcp: Network UPS Tools server
 watchdog: tcp://[HOST]:[PORT:3493]
 options:
-  ups_name: qnapups
-  driver: huawei-ups2000
+  ups_name: 1uRackups
+  driver: usbhid-ups
   device: auto
-  description: Huawei UPS2000
+  description: Eaton 5P 1150iR
   poll_interval: 2
   max_retry: 5
   retry_delay: 5
   monitor_user: monuser
-  monitor_password: CHANGE_ME
+  monitor_password: "123456"
   monitor_role: secondary
   admin_enabled: true
   admin_user: admin
-  admin_password: CHANGE_ME
+  admin_password: "123456"
   admin_role: primary
   allow_admin_commands: true
-  extra_ups_config: ""
+  extra_ups_config: |-
+    vendorid = 0463
+    productid = ffff
   healthcheck_interval: 30
   healthcheck_failures: 3
   log_level: info

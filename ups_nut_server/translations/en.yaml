@@ -1,13 +1,13 @@
 configuration:
   ups_name:
     name: UPS name
-    description: NUT device name presented to clients, for example qnapups or ups.
+    description: NUT device name presented to clients, for example 1uRackups or ups.
   driver:
     name: NUT driver
-    description: Driver executable name, for example huawei-ups2000 or usbhid-ups.
+    description: Driver executable name, for example usbhid-ups or huawei-ups2000.
   device:
     name: Device or port
-    description: Use auto, a /dev/serial/by-id path, another device path, or a network endpoint required by the driver.
+    description: Use auto for the Eaton USB HID UPS, a /dev/serial/by-id path for serial devices, or a network endpoint required by the driver.
   description:
     name: UPS description
     description: Human-readable description stored in ups.conf.

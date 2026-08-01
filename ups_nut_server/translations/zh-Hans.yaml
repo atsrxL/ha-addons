@@ -1,13 +1,13 @@
 configuration:
   ups_name:
     name: UPS 名称
-    description: 提供给客户端的 NUT 设备名称，例如 qnapups 或 ups。
+    description: 提供给客户端的 NUT 设备名称，例如 1uRackups 或 ups。
   driver:
     name: NUT 驱动
-    description: 驱动程序名称，例如 huawei-ups2000 或 usbhid-ups。
+    description: 驱动程序名称，例如 usbhid-ups 或 huawei-ups2000。
   device:
     name: 设备或端口
-    description: 可填写 auto、/dev/serial/by-id 路径、其他设备路径，或驱动所需的网络地址。
+    description: Eaton USB HID UPS 使用 auto，串口设备使用 /dev/serial/by-id 路径，也可填写其他设备路径或驱动所需的网络地址。
   description:
     name: UPS 描述
     description: 写入 ups.conf 的可读设备描述。
