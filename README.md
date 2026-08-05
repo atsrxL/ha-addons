@@ -10,6 +10,7 @@ Custom Home Assistant add-ons maintained for personal smart home services.
 - [DeepSeek Ollama Proxy](./deepseek_ollama_proxy): Use DeepSeek V4 Flash or V4 Pro through Home Assistant's built-in Ollama conversation integration on port `11435`.
 - [UPS NUT Server](./ups_nut_server): Share a USB or serial UPS with Home Assistant, QNAP, Synology, and other NUT clients on port `3493`.
 - [Raritan PX MQTT](./raritan_px_mqtt): Bridge Raritan PX2/PX3 PDU sensors, outlet switches, and power-cycle controls through the existing Home Assistant MQTT broker.
+- [Mercury PoE MQTT](./mercury_poe_mqtt): Publish Mercury managed PoE switch totals and per-port electrical data, with native port re-power buttons.
 
 ## Installation
 

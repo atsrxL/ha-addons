@@ -1,0 +1,33 @@
+name: Mercury PoE MQTT
+version: 0.1.0
+slug: mercury_poe_mqtt
+description: Bridge Mercury managed PoE switch power data and port reboot controls to Home Assistant MQTT.
+url: https://github.com/atsrxL/ha-addons/tree/main/mercury_poe_mqtt
+image: ghcr.io/atsrxl/ha-addon-mercury-poe-mqtt
+arch:
+  - aarch64
+  - amd64
+init: false
+startup: services
+boot: auto
+stage: stable
+services:
+  - mqtt:need
+options:
+  switch_url: http://192.168.123.5
+  username: admin
+  password: ""
+  poll_interval: 30
+  request_timeout: 10
+  discovery_prefix: homeassistant
+  topic_prefix: mercury_poe
+  log_level: INFO
+schema:
+  switch_url: url
+  username: str
+  password: password
+  poll_interval: int(1,3600)
+  request_timeout: int(3,60)
+  discovery_prefix: str
+  topic_prefix: str
+  log_level: list(DEBUG|INFO|WARNING|ERROR)
