@@ -1,0 +1,25 @@
+configuration:
+  switch_url:
+    name: Switch URL
+    description: Full Mercury management URL, including http://.
+  username:
+    name: Username
+    description: Mercury web-management username.
+  password:
+    name: Password
+    description: Mercury web-management password. It is masked and is not included in the image.
+  poll_interval:
+    name: Polling interval
+    description: Seconds between PoE data reads (1-3600).
+  request_timeout:
+    name: Request timeout
+    description: Maximum seconds to wait for a switch HTTP response.
+  discovery_prefix:
+    name: MQTT Discovery prefix
+    description: Normally homeassistant.
+  topic_prefix:
+    name: MQTT topic prefix
+    description: Root topic used by this bridge.
+  log_level:
+    name: Log level
+    description: Application logging verbosity.

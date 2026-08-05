@@ -1,0 +1,25 @@
+configuration:
+  switch_url:
+    name: 交换机管理地址
+    description: 水星交换机完整管理地址，需要包含 http://。
+  username:
+    name: 用户名
+    description: 水星交换机网页管理用户名。
+  password:
+    name: 密码
+    description: 水星交换机网页管理密码；界面会隐藏密码，镜像中不包含密码。
+  poll_interval:
+    name: 轮询时间
+    description: 每次读取 PoE 数据的间隔秒数（1-3600）。
+  request_timeout:
+    name: 请求超时
+    description: 等待交换机 HTTP 响应的最长秒数。
+  discovery_prefix:
+    name: MQTT Discovery 前缀
+    description: 通常保持为 homeassistant。
+  topic_prefix:
+    name: MQTT 主题前缀
+    description: 本应用发布状态和接收命令所用的根主题。
+  log_level:
+    name: 日志级别
+    description: 应用日志详细程度。
