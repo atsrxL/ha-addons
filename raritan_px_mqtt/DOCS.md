@@ -22,6 +22,8 @@ pdu_password: YOUR_RARITAN_WEB_PASSWORD
 protocol: https
 verify_ssl: false
 poll_interval: 15
+inlet_real_power_calibration: false
+inlet_fixed_offset_calibration: false
 hide_outlet_sensors: []
 discovery_prefix: homeassistant
 topic_prefix: raritan2mqtt
@@ -40,6 +42,21 @@ log_level: INFO
 - `log_level`: Logging verbosity.
 
 MQTT host, port, username, password, and TLS settings are obtained automatically from the Supervisor MQTT service. They are not duplicated in this app's configuration.
+
+### Inlet active-power calibration (5440V)
+
+Two independent configuration switches apply the simplified 5440V fit against a UT230A reference. Both default to off. Save and restart the app after changing them.
+
+| Real power calibration (`inlet_real_power_calibration`) | Fixed device offset calibration (`inlet_fixed_offset_calibration`) | Published power |
+| --- | --- | --- |
+| Off | Off | `x` |
+| On | Off | `x * 1.01` |
+| Off | On | `x + 6.35` |
+| On | On | `x * 1.01 + 6.35` |
+
+Here `x` is the inlet active-power reading in watts. The 6.35 W fitted offset already includes the device's approximately 6.1 W consumption; do not add another 6.1 W. For example, 291 W becomes 300.26 W with both enabled, published as 300.3 W at the existing one-decimal precision.
+
+Calibration updates the existing inlet active-power sensor and applies independently to every inlet, adding the offset once per inlet. These coefficients come from the supplied 5440V measurements and are opt-in for other models. Outlet measurements, other inlet measurements, and cumulative energy counters remain unchanged. Invalid or unavailable readings remain unavailable.
 
 ### Hide selected outlet measurements
 

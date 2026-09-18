@@ -44,6 +44,8 @@ class Bridge:
             verify_ssl=env_bool("PDU_VERIFY_SSL", False),
             timeout=max(10, self.poll_interval),
             topic_prefix=topic_prefix,
+            inlet_real_power_calibration=env_bool("INLET_REAL_POWER_CALIBRATION"),
+            inlet_fixed_offset_calibration=env_bool("INLET_FIXED_OFFSET_CALIBRATION"),
         )
 
         self.stop_event = threading.Event()

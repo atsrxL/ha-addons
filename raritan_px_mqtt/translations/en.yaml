@@ -1,4 +1,10 @@
 configuration:
+  inlet_real_power_calibration:
+    name: Real power calibration
+    description: Multiply each inlet active-power reading by 1.01 for the 5440V. Disabled by default; restart the app after saving.
+  inlet_fixed_offset_calibration:
+    name: Fixed device offset calibration
+    description: Add 6.35 W to each inlet active-power reading, including device consumption. Both enabled gives x * 1.01 + 6.35. Disabled by default; restart after saving.
   hide_outlet_sensors:
     name: Hidden outlet sensors
     description: Select outlet measurement entities that should not be published. Inlet measurements are unaffected.

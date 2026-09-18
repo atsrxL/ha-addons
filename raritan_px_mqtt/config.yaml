@@ -1,5 +1,5 @@
 name: Raritan PX MQTT
-version: 0.2.5
+version: 0.2.6
 slug: raritan_px_mqtt
 description: Bridge a Raritan PX2/PX3 PDU to Home Assistant through the existing MQTT broker.
 url: https://github.com/atsrxL/ha-addons/tree/main/raritan_px_mqtt
@@ -20,6 +20,8 @@ options:
   protocol: https
   verify_ssl: false
   poll_interval: 15
+  inlet_real_power_calibration: false
+  inlet_fixed_offset_calibration: false
   hide_outlet_sensors: []
   discovery_prefix: homeassistant
   topic_prefix: raritan2mqtt
@@ -31,6 +33,8 @@ schema:
   protocol: list(http|https)
   verify_ssl: bool
   poll_interval: int(1,3600)
+  inlet_real_power_calibration: bool
+  inlet_fixed_offset_calibration: bool
   hide_outlet_sensors:
     - list(Apparent Power|Frequency|Power Factor|Voltage|Current)?
   discovery_prefix: str

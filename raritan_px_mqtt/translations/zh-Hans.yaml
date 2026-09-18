@@ -1,4 +1,10 @@
 configuration:
+  inlet_real_power_calibration:
+    name: 真实功率校准
+    description: 将每个 inlet 的有功功率乘以 1.01，修正 5440V 的测量低估。默认关闭，保存后重启应用生效。
+  inlet_fixed_offset_calibration:
+    name: 固定设备offset校准
+    description: 为每个 inlet 的有功功率增加 6.35 W，已包含设备自身功耗。两个开关同时开启时为 x × 1.01 + 6.35；默认关闭，保存后重启应用生效。
   hide_outlet_sensors:
     name: 隐藏的插座传感器
     description: 选择不发布到 Home Assistant 的插座测量实体；不会影响输入端测量实体。

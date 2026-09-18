@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.6
+
+- Add independent real-power and fixed-device-offset calibration switches for inlet active power, disabled by default.
+- Apply the 5440V formula `x * 1.01 + 6.35` when both switches are enabled.
+- Preserve unavailable readings and leave outlet measurements and energy counters unchanged.
+- Add English and Simplified Chinese option descriptions.
+
 ## 0.2.5
 
 - Add a multi-select app option for hiding selected per-outlet measurement entities.

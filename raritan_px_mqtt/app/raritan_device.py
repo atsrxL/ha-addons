@@ -39,8 +39,12 @@ class RaritanDevice:
         verify_ssl: bool,
         timeout: int,
         topic_prefix: str,
+        inlet_real_power_calibration: bool = False,
+        inlet_fixed_offset_calibration: bool = False,
     ) -> None:
         self.host = host
+        self.inlet_real_power_calibration = inlet_real_power_calibration
+        self.inlet_fixed_offset_calibration = inlet_fixed_offset_calibration
         self.username = username
         self.password = password
         self.protocol = protocol
@@ -191,7 +195,16 @@ class RaritanDevice:
         payloads: dict[str, dict[str, Any]] = {}
         for binding, reading in zip(self.sensors, sensor_results, strict=True):
             if not isinstance(reading, Exception):
-                payloads.setdefault(binding.state_topic, {})[binding.state_key] = reading_value(reading, binding.spec)
+                value = reading_value(reading, binding.spec)
+                if binding.scope == "inlet" and binding.attribute == "activePower" and value is not None:
+                    # 5440V fit: the offset already includes device consumption.
+                    if self.inlet_real_power_calibration:
+                        value *= 1.01
+                    if self.inlet_fixed_offset_calibration:
+                        value += 6.35
+                    if binding.spec.precision is not None:
+                        value = round(value, binding.spec.precision)
+                payloads.setdefault(binding.state_topic, {})[binding.state_key] = value
 
         for outlet, state in zip(self.outlets, outlet_results, strict=True):
             payload = payloads.setdefault(outlet.state_topic, {})

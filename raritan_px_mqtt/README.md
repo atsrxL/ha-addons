@@ -10,6 +10,7 @@ Bridge Raritan PX2/PX3 PDUs into Home Assistant with the PDU JSON-RPC API and MQ
 - Creates separate outlet switches for on/off control
 - Supports outlet power-cycle commands
 - Supports polling intervals down to 1 second
+- Supports independent inlet real-power (`× 1.01`) and fixed-offset (`+ 6.35 W`) calibration switches for the 5440V, both disabled by default
 - Can hide selected per-outlet measurement entities from app configuration
 
 See `DOCS.md` for installation and configuration.
